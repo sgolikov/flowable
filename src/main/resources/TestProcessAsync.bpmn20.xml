@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions
+    xmlns:flowable="http://flowable.org/bpmn"
+    xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+    targetNamespace="Examples">
+
+    <process id="testProcessAsync">
+        <startEvent id="theStart"/>
+        <sequenceFlow sourceRef="theStart" targetRef="serviceInvocation"/>
+        <serviceTask id="serviceInvocation" flowable:delegateExpression="${serviceTaskInvoker}"
+                     flowable:triggerable="true"
+                     flowable:async="true"
+                     flowable:exclusive="true"/>
+        <sequenceFlow sourceRef="serviceInvocation" targetRef="theEnd"/>
+        <endEvent id="theEnd"/>
+    </process>
+</definitions>
