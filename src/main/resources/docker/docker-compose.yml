@@ -1,0 +1,9 @@
+version: '3.1'
+
+services:
+
+  db:
+    image: store/oracle/database-enterprise:12.2.0.1
+    restart: always
+    ports:
+      - 1521:1521
